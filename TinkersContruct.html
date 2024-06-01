@@ -1,0 +1,111 @@
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tinker's Construct - Mod Minecraft</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e0f2f1; /* Color pastello per il background */
+            color: #333;
+            text-align: center;
+            padding-bottom: 60px;
+        }
+
+        header {
+            background-color: #009688; /* Color verde scuro per l'intestazione */
+            color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        header p {
+            font-size: 1.2em;
+            line-height: 1.5;
+            margin-bottom: 20px; /* Aggiunto margine inferiore per spaziatura */
+        }
+
+        main {
+            padding: 0 20px;
+        }
+
+        main img {
+            margin: 20px auto; /* Centrare l'immagine */
+            height: 300px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .button-container {
+            margin: 20px 0;
+        }
+
+        .button-container a,
+        .button-container button {
+            background-color: #009688; /* Color verde scuro per i pulsanti */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            margin: 0 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            text-decoration: none; /* Rimuovere il sottolineato dai link */
+            display: inline-block; /* Impedire il comportamento di blocco del link */
+        }
+
+        .button-container a:hover,
+        .button-container button:hover {
+            background-color: #00796b; /* Sfumatura leggermente più scura al passaggio */
+        }
+
+        footer {
+            background-color: #00796b; /* Color verde scuro per il piè di pagina */
+            color: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            padding: 10px 0;
+            font-size: 18px;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        #footer_text {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Tinker's Construct</h1>
+        <p>Tinker's Construct è stato creato da mDiyo ed è sviluppato da boni. 
+        Viene utilizzato per una moltitudine di scopi, principalmente per creare strumenti e armi di base e avanzati. 
+        Puoi anche utilizzare una fonderia per un'efficiente lavorazione del minerale. 
+        Altre parti di TC includono nuovi mob, estensioni dell'inventario e molti, molti nuovi blocchi decorativi e funzionali.</p>
+    </header>
+    <main>
+        <img src="Tinker'sConstruct.png" alt="Tinker's Construct Mod Image">
+        <div class="button-container">
+            <a href="sito.html" class="button">Home</a>
+            <button onclick="window.location.href='https://tinkers-construct.fandom.com/wiki/Tinkers%27_Construct_Wiki'">Wiki della Mod</button>
+            <button onclick="window.location.href='https://www.curseforge.com/minecraft/mc-mods/tinkers-construct'">Scarica la Mod</button>
+        </div>
+    </main>
+    <footer>
+        <p id="footer_text">&copy; 2024 Pasquale Zaccagnino. Tutti i diritti riservati.</p>
+    </footer>
+</body>
+</html>
