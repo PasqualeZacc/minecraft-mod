@@ -1,9 +1,28 @@
+<!DOCTYPE html>
 <html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tinker's Construct - Mod Minecraft</title>
+    <!-- Font Google: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
+        :root {
+            --bg-color: #0f172a;
+            --surface-color: #1e293b;
+            --surface-border: #334155;
+            --primary: #d97706;
+            --primary-dark: #b45309;
+            --accent: #fbbf24;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+            --radius: 12px;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -11,101 +30,248 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #e0f2f1; /* Color pastello per il background */
-            color: #333;
-            text-align: center;
-            padding-bottom: 60px;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
+        /* HEADER & HERO */
         header {
-            background-color: #009688; /* Color verde scuro per l'intestazione */
-            color: white;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(180deg, #451a03 0%, var(--bg-color) 100%);
+            padding: 60px 20px 40px;
+            text-align: center;
+            border-bottom: 1px solid var(--surface-border);
+        }
+
+        .header-container {
+            max-width: 900px;
+            margin: 0 auto;
         }
 
         header h1 {
-            margin-bottom: 10px;
-            font-size: 2.5em;
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #ffffff 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 12px;
         }
 
         header p {
-            font-size: 1.2em;
-            line-height: 1.5;
-            margin-bottom: 20px; /* Aggiunto margine inferiore per spaziatura */
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            max-width: 750px;
+            margin: 0 auto;
         }
 
+        /* NAVIGATION */
+        nav {
+            background-color: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--surface-border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            padding: 12px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 8px 16px;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: var(--accent);
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: #ffffff !important;
+            padding: 8px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            box-shadow: 0 0 15px rgba(217, 119, 6, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 0 20px rgba(217, 119, 6, 0.5);
+        }
+
+        /* MAIN CONTENT */
         main {
+            flex: 1;
+            max-width: 1000px;
+            margin: 40px auto;
             padding: 0 20px;
-        }
-
-        main img {
-            margin: 20px auto; /* Centrare l'immagine */
-            height: 300px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .button-container {
-            margin: 20px 0;
-        }
-
-        .button-container a,
-        .button-container button {
-            background-color: #009688; /* Color verde scuro per i pulsanti */
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            font-size: 18px;
-            margin: 0 10px;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-            text-decoration: none; /* Rimuovere il sottolineato dai link */
-            display: inline-block; /* Impedire il comportamento di blocco del link */
-        }
-
-        .button-container a:hover,
-        .button-container button:hover {
-            background-color: #00796b; /* Sfumatura leggermente più scura al passaggio */
-        }
-
-        footer {
-            background-color: #00796b; /* Color verde scuro per il piè di pagina */
-            color: white;
-            position: fixed;
-            bottom: 0;
             width: 100%;
-            padding: 10px 0;
-            font-size: 18px;
-            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        #footer_text {
-            margin: 0;
+        .card {
+            background-color: var(--surface-color);
+            border: 1px solid var(--surface-border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .hero-image-wrapper {
+            width: 100%;
+            overflow: hidden;
+            border-radius: var(--radius);
+            border: 1px solid var(--surface-border);
+            margin-bottom: 30px;
+        }
+
+        .hero-image-wrapper img {
+            width: 100%;
+            height: 380px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .hero-image-wrapper img:hover {
+            transform: scale(1.02);
+        }
+
+        .card h2 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: var(--text-main);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .feature-item {
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--surface-border);
+            border-radius: 8px;
+            border-top: 3px solid var(--primary);
+        }
+
+        .feature-item h3 {
+            font-size: 1.1rem;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+
+        .feature-item p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: #020617;
+            border-top: 1px solid var(--surface-border);
+            color: var(--text-muted);
+            padding: 25px 20px;
+            text-align: center;
+            font-size: 0.9rem;
+            margin-top: auto;
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            .hero-image-wrapper img {
+                height: 220px;
+            }
+            nav ul {
+                flex-direction: column;
+                gap: 8px;
+            }
+            .nav-link, .btn-primary {
+                width: 100%;
+                text-align: center;
+                display: block;
+            }
         }
     </style>
 </head>
 <body>
+
     <header>
-        <h1>Tinker's Construct</h1>
-        <p>Tinker's Construct è stato creato da mDiyo ed è sviluppato da boni. 
-        Viene utilizzato per una moltitudine di scopi, principalmente per creare strumenti e armi di base e avanzati. 
-        Puoi anche utilizzare una fonderia per un'efficiente lavorazione del minerale. 
-        Altre parti di TC includono nuovi mob, estensioni dell'inventario e molti, molti nuovi blocchi decorativi e funzionali.</p>
+        <div class="header-container">
+            <h1>Tinker's Construct</h1>
+            <p>Forgia e personalizza strumenti e armi su misura. Utilizza la fonderia avanzata per raddoppiare la resa dei minerali e scopri nuovi moduli di gioco.</p>
+        </div>
     </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="https://tinkers-construct.fandom.com/wiki/Tinkers%27_Construct_Wiki" target="_blank" rel="noopener" class="nav-link">Wiki della Mod</a></li>
+            <li><a href="https://www.curseforge.com/minecraft/mc-mods/tinkers-construct" target="_blank" rel="noopener" class="btn-primary">Scarica la Mod</a></li>
+        </ul>
+    </nav>
+
     <main>
-        <img src="Tinker'sConstruct.png" alt="Tinker's Construct Mod Image">
-        <div class="button-container">
-            <a href="index.html" class="button">Home</a>
-            <button onclick="window.location.href='https://tinkers-construct.fandom.com/wiki/Tinkers%27_Construct_Wiki'">Wiki della Mod</button>
-            <button onclick="window.location.href='https://www.curseforge.com/minecraft/mc-mods/tinkers-construct'">Scarica la Mod</button>
+        <div class="card">
+            <div class="hero-image-wrapper">
+                <img src="Tinker'sConstruct.png" alt="Anteprima di Tinker's Construct Mod">
+            </div>
+
+            <h2>L'arte della metallurgia e del crafting</h2>
+            <p style="color: var(--text-muted);">
+                Sviluppata originariamente da mDiyo e boni, Tinker's Construct rivoluziona il sistema di strumenti e armi. Invece del classico crafting su banco, componi le tue attrezzature partendo dai singoli elementi, integrando leghe speciali e abilità passive personalizzate.
+            </p>
+
+            <div class="features-grid">
+                <div class="feature-item">
+                    <h3>Fonderia Avanzata</h3>
+                    <p>Fondi i metalli in forma liquida per creare leghe potenti e raddoppiare l'efficienza di estrazione dei minerali.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Strumenti Modulari</h3>
+                    <p>Combina diversi materiali per testa, manico e finiture, ognuno con modificatori e proprietà uniche.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Espansioni & Blocchi</h3>
+                    <p>Accedi a nuovi slot d'inventario, nuovi mob, accessori decorativi e stazioni di lavoro dedicate.</p>
+                </div>
+            </div>
         </div>
     </main>
+
     <footer>
         <p id="footer_text">&copy; 2024 Pasquale Zaccagnino. Tutti i diritti riservati.</p>
     </footer>
+
 </body>
 </html>
