@@ -1,104 +1,269 @@
+<!DOCTYPE html>
 <html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Biomes O' Plenty - Mod Minecraft</title>
+    <!-- Font Google: Inter per un aspetto pulito e moderno -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
+        :root {
+            --primary: #00796b;
+            --primary-dark: #004d40;
+            --primary-light: #48a999;
+            --accent: #26a69a;
+            --bg-color: #f4fbfb;
+            --surface-color: #ffffff;
+            --text-main: #2c3e50;
+            --text-muted: #546e7a;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+            --radius: 12px;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
-            font-family: Arial, sans-serif;
-            background-color: #e0f7fa;
-            color: #333;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
+
+        /* HEADER & HERO */
         header {
-            background-color: #00796b;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
             color: white;
-            padding: 20px;
-            margin-bottom: 20px;
+            padding: 60px 20px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
+
+        .header-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
         header h1 {
-            margin-bottom: 10px;
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 15px;
         }
+
+        header p {
+            font-size: 1.15rem;
+            opacity: 0.95;
+            font-weight: 400;
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        /* NAVIGATION */
         nav {
-            background-color: #004d40;
-            padding: 10px;
-            margin-bottom: 20px;
+            background-color: var(--surface-color);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
         }
+
         nav ul {
-            list-style-type: none;
+            list-style: none;
             display: flex;
             justify-content: center;
-        }
-        nav ul li {
-            margin: 0 15px;
-        }
-        nav ul li a, nav ul li button {
-            color: white;
-            text-decoration: none;
-            font-size: 18px;
-            background: none;
-            border: none;
-            cursor: pointer;
-        }
-        nav ul li a:hover, nav ul li button:hover {
-            text-decoration: underline;
-        }
-        main {
-            padding: 0 20px;
-            text-align: center;
-        }
-        main img {
-            margin: 20px 0;
-            height: 300px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        footer {
-            background-color: #004d40;
-            color: white;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            padding: 10px 0;
-            font-size: 18px;
-            text-align: center;
-        }
-        .content {
-            max-width: 800px;
+            align-items: center;
+            gap: 15px;
+            padding: 12px 20px;
+            max-width: 1000px;
             margin: 0 auto;
-            line-height: 1.6;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 8px 16px;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-link:hover {
+            background-color: rgba(0, 121, 107, 0.08);
+            color: var(--primary);
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white !important;
+            padding: 8px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 6px rgba(0, 121, 107, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-1px);
+        }
+
+        /* MAIN CONTENT */
+        main {
+            flex: 1;
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+            width: 100%;
+        }
+
+        .card {
+            background-color: var(--surface-color);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .hero-image-wrapper {
+            width: 100%;
+            overflow: hidden;
+            border-radius: var(--radius);
+            margin-bottom: 30px;
+        }
+
+        .hero-image-wrapper img {
+            width: 100%;
+            height: 380px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .hero-image-wrapper img:hover {
+            transform: scale(1.02);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .feature-item {
+            padding: 20px;
+            background-color: var(--bg-color);
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .feature-item h3 {
+            font-size: 1.1rem;
+            color: var(--primary-dark);
+            margin-bottom: 8px;
+        }
+
+        .feature-item p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: var(--primary-dark);
+            color: white;
+            padding: 25px 20px;
+            text-align: center;
+            font-size: 0.9rem;
+            margin-top: auto;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            .hero-image-wrapper img {
+                height: 220px;
+            }
+            nav ul {
+                flex-direction: column;
+                gap: 8px;
+            }
+            .nav-link, .btn-primary {
+                width: 100%;
+                text-align: center;
+                display: block;
+            }
         }
     </style>
 </head>
 <body>
+
     <header>
-        <h1>Biomes O' Plenty</h1>
-        <p>Biomes O’Plenty non è una semplice MOD che fa cambiare il colore dell’erba o mette degli alberi in più. 
-           Biomes O’Plenty aggiunge una flora ed una fauna adatta ad ogni singolo bioma, e ci tengo a ricordare che ne sono più di 90. 
-           Inoltre i creatori di Biomes O’Plenty aggiornano ogni volta che avviene un cambio di STAGIONE o di FESTIVITÀ.</p>
+        <div class="header-container">
+            <h1>Biomes O' Plenty</h1>
+            <p>Espandi l'esplorazione di Minecraft con oltre 90 nuovi biomi, flora personalizzata, fauna unica e risorse esclusive per un'esperienza di gioco completamente rinnovata.</p>
+        </div>
     </header>
+
     <nav>
         <ul>
-            <li><a href="index.html" class="button">Home</a></li>
-            <li>
-                <button onclick="window.location.href='https://www.curseforge.com/minecraft/mc-mods/biomes-o-plenty'">Download</button>
-            </li>
-            <li>
-                <button onclick="window.location.href='https://minecraft.fandom.com/wiki/Mods/Biomes_O%27_Plenty'">Wiki della Mod</button>
-            </li>
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="https://minecraft.fandom.com/wiki/Mods/Biomes_O%27_Plenty" target="_blank" rel="noopener" class="nav-link">Wiki Ufficiale</a></li>
+            <li><a href="https://www.curseforge.com/minecraft/mc-mods/biomes-o-plenty" target="_blank" rel="noopener" class="btn-primary">Download Mod</a></li>
         </ul>
     </nav>
+
     <main>
-        <div class="content">
-            <img src="Biomes_O'_Plenty.jpeg" alt="Biomes O' Plenty Mod Image">
+        <div class="card">
+            <div class="hero-image-wrapper">
+                <img src="Biomes_O'_Plenty.jpeg" alt="Anteprima dei biomi di Biomes O' Plenty">
+            </div>
+
+            <h2>Un mondo interamente riprogettato</h2>
+            <p style="margin-top: 10px; color: var(--text-muted);">
+                Biomes O' Plenty va ben oltre le semplici modifiche estetiche al terreno. Introduce un ecosistema completo che trasforma radicalmente la generazione del mondo overworld e delle dimensioni alternative.
+            </p>
+
+            <div class="features-grid">
+                <div class="feature-item">
+                    <h3>Oltre 90 Biomi</h3>
+                    <p>Dai maestosi picchi innevati alle foreste pluviali lussureggianti fino a pianure mistiche.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Flora & Fauna Dedicate</h3>
+                    <p>Ogni bioma ospita piante, alberi, blocchi da costruzione e creature specifiche.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Aggiornamenti Costanti</h3>
+                    <p>Supporto attivo e contenuti a tema rilasciati in concomitanza con stagioni e festività.</p>
+                </div>
+            </div>
         </div>
     </main>
+
     <footer>
         <p id="footer_text">&copy; 2024 Pasquale Zaccagnino. Tutti i diritti riservati.</p>
     </footer>
+
 </body>
 </html>
